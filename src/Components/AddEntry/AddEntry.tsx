@@ -14,6 +14,7 @@ import moment from "moment";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/lab";
 import "./AddEntry.scss";
+import { TripData } from "../../Models/TripData";
 
 interface AddEntryProps {}
 
@@ -43,7 +44,56 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
   const [totalPay, setTotalPay] = useState(0);
   const [netPay, setNetPay] = useState(0);
 
-  console.log(journeyDate);
+  const [tripData, setTripData] = useState<TripData>({
+    custName,
+    custNum,
+    custId,
+    journeyFrom,
+    journeyTo,
+    journeyDate,
+    vehicleNum,
+    driverName,
+    driverNum,
+    openingReading,
+    endReading,
+    totalReading,
+    paymentType,
+    tollFee,
+    kmDriven,
+    driverBeta,
+    advance,
+    parkingFee,
+    costPerKm,
+    totalPay,
+    netPay,
+  });
+
+  const handleSubmit = () => {
+    setTripData({
+      custName,
+      custNum,
+      custId,
+      journeyFrom,
+      journeyTo,
+      journeyDate,
+      vehicleNum,
+      driverName,
+      driverNum,
+      openingReading,
+      endReading,
+      totalReading,
+      paymentType,
+      tollFee,
+      kmDriven,
+      driverBeta,
+      advance,
+      parkingFee,
+      costPerKm,
+      totalPay,
+      netPay,
+    });
+  };
+  console.log(tripData);
 
   return (
     <div className="add-entry">
@@ -349,7 +399,9 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
             </div>
           </div>
         </Paper>
-        <Button variant="contained">Submit</Button>
+        <Button variant="contained" onClick={handleSubmit}>
+          Submit
+        </Button>
       </div>
     </div>
   );
