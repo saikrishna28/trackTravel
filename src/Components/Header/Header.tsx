@@ -1,5 +1,5 @@
 import { AppBar, Badge, IconButton, Typography } from "@mui/material";
-import React, { Component } from "react";
+import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -7,9 +7,11 @@ import { Toolbar } from "@mui/material";
 import "./Header.scss";
 import { Box } from "@mui/material";
 
-interface HeaderProps {}
+interface HeaderProps {
+  setDrawerState: (drawerOpen: boolean) => void;
+}
 
-const Header: React.FunctionComponent<HeaderProps> = () => {
+const Header: React.FunctionComponent<HeaderProps> = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
@@ -20,6 +22,7 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => props.setDrawerState(true)}
           >
             <MenuIcon />
           </IconButton>

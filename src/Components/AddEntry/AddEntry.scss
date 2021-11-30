@@ -1,0 +1,29 @@
+.add-entry {
+  color: #003f7d;
+
+  &__title {
+    margin-top: 5rem;
+  }
+  &__container {
+    font-family: inherit;
+    padding: 0 5rem;
+    margin-bottom: 2rem;
+  }
+
+  .details-card {
+    color: inherit;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    &__inputs-div {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .entry-input {
+    // width: 15rem;
+    margin: 0 0.5rem 0.5rem 0;
+  }
+}
