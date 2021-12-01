@@ -1,24 +1,19 @@
 import {
   Button,
   FormControl,
-  FormHelperText,
-  Input,
   InputAdornment,
   InputLabel,
   MenuItem,
-  OutlinedInput,
   Paper,
   Select,
   TextField,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import moment from "moment";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/lab";
 import "./AddEntry.scss";
 import { TripData } from "../../Models/TripData";
-import { useHistory } from "react-router-dom";
 import AppPage from "../AppPage/AppPage";
 
 interface AddEntryProps {}

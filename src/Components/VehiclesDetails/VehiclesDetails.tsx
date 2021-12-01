@@ -4,6 +4,12 @@ import {
   Paper,
   TextField,
   Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from "@mui/material";
 import React from "react";
 import AppPage from "../AppPage/AppPage";
@@ -86,6 +92,77 @@ const VehiclesDetails: React.FunctionComponent<VehiclesDetailsProps> = () => {
               </div>
             </div>
           </Paper>
+          <div className="vehicles__divs">
+            <div className="vehicles__divs-vehicle">
+              <Typography
+                color="#003f7d;"
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+              >
+                Vehicles Data:
+              </Typography>
+              <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Vehicle Number</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {"AP39BV9999"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {"AP28DS1234"}
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </div>
+            <div className="vehicles__divs-driver">
+              <Typography
+                color="#003f7d;"
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1 }}
+              >
+                Driver Data:
+              </Typography>
+              <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Driver Name</TableCell>
+                      <TableCell>Driver Number</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {"Rajesh"}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {"Sanjay"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        {"9090909090"}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {"9134309876"}
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </div>
+          </div>
         </div>
       </div>
     </AppPage>

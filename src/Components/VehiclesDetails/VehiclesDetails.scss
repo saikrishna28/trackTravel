@@ -5,6 +5,18 @@
     margin-bottom: 2rem;
   }
 
+  &__divs {
+    display: flex;
+    justify-content: space-between;
+
+    &-vehicle {
+      //   width: 50%;
+    }
+    &-driver {
+      //   width: 50%;
+    }
+  }
+
   .details-card {
     color: inherit;
     margin-bottom: 1rem;
