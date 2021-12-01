@@ -3,22 +3,15 @@ import "./App.scss";
 import AddEntry from "./Components/AddEntry/AddEntry";
 import DrawerComponent from "./Components/Drawer/DrawerComponent";
 import Header from "./Components/Header/Header";
+import { BrowserRouter, Route } from "react-router-dom";
+import AppPage from "./Components/AppPage/AppPage";
 
 function App() {
-  const [drawerState, setDrawerState] = useState(false);
   return (
-    <div className="App">
-      <Header
-        setDrawerState={(drawerOpen: boolean) => setDrawerState(drawerOpen)}
-      />
-      <div className="app-content">
-        <AddEntry />
-      </div>
-      <DrawerComponent
-        drawerOpen={drawerState}
-        setDrawerState={(drawerOpen: boolean) => setDrawerState(drawerOpen)}
-      />
-    </div>
+    <BrowserRouter>
+      <Route path="/" exact component={AppPage} />
+      <Route path="/addEntry" component={AddEntry} />
+    </BrowserRouter>
   );
 }
 

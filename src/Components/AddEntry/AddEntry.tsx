@@ -1,9 +1,12 @@
 import {
   Button,
   FormControl,
+  FormHelperText,
   Input,
+  InputAdornment,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Paper,
   Select,
   TextField,
@@ -15,6 +18,8 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/lab";
 import "./AddEntry.scss";
 import { TripData } from "../../Models/TripData";
+import { useHistory } from "react-router-dom";
+import AppPage from "../AppPage/AppPage";
 
 interface AddEntryProps {}
 
@@ -25,7 +30,7 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
 
   const [journeyFrom, setJourneyFrom] = useState("");
   const [journeyTo, setJourneyTo] = useState("");
-  const [journeyDate, setJourneyDate] = useState<Date | null>(new Date());
+  const [journeyDate, setJourneyDate] = useState<Date | null>(null);
 
   const [vehicleNum, setVehicleNum] = useState("--Select--");
   const [driverName, setDriverName] = useState("");
@@ -94,316 +99,355 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
     });
   };
   console.log(tripData);
-
   return (
-    <div className="add-entry">
-      <div className="add-entry__container">
-        <div className="add-entry__title">
-          <h1 className="">ADD NEW ENTRY</h1>
-        </div>
-        <Paper
-          elevation={5}
-          className="add-entry__customer-details details-card"
-        >
-          <Typography
-            color="#003f7d;"
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Customer Details:
-          </Typography>
-          <div className="details-card__inputs-div">
-            <div>
-              <TextField
-                className="entry-input"
-                label="Name"
-                variant="outlined"
-                value={custName}
-                onChange={(newValue) => {
-                  setCustName(newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Mobile"
-                variant="outlined"
-                type="number"
-                value={custNum}
-                onChange={(newValue) => {
-                  setCustNum(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="ID Proof"
-                variant="outlined"
-                value={custId}
-                onChange={(newValue) => {
-                  setCustId(newValue.target.value);
-                }}
-              />
-            </div>
+    <AppPage>
+      <div className="add-entry">
+        <div className="add-entry__container">
+          <div className="add-entry__title">
+            <h1 className="">ADD NEW ENTRY</h1>
           </div>
-        </Paper>
-        <Paper
-          elevation={5}
-          className="add-entry__journey-details details-card"
-        >
-          <Typography
-            color="#003f7d;"
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
+          <Paper
+            elevation={5}
+            className="add-entry__customer-details details-card"
           >
-            Journey Details:
-          </Typography>
-          <div className="details-card__inputs-div">
-            <div>
-              <TextField
-                className="entry-input"
-                label="From"
-                variant="outlined"
-                value={journeyFrom}
-                onChange={(newValue) => {
-                  setJourneyFrom(newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="To"
-                variant="outlined"
-                value={journeyTo}
-                onChange={(newValue) => {
-                  setJourneyTo(newValue.target.value);
-                }}
-              />
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker
-                  label="DOJ"
-                  value={journeyDate}
-                  onChange={(newValue) => {
-                    setJourneyDate(newValue);
-                  }}
-                  renderInput={(params) => <TextField {...params} />}
-                />
-              </LocalizationProvider>
-            </div>
-          </div>
-        </Paper>
-        <Paper
-          elevation={7}
-          className="add-entry__vehicle-details details-card"
-        >
-          <Typography
-            color="#003f7d;"
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Vehicle Details:
-          </Typography>
-          <div className="details-card__inputs-div">
-            <div>
-              <FormControl>
-                <InputLabel id="vehicle-select-label">Vehicle num</InputLabel>
-                <Select
+            <Typography
+              color="#003f7d;"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Customer Details:
+            </Typography>
+            <div className="details-card__inputs-div">
+              <div>
+                <TextField
                   className="entry-input"
-                  labelId="vehicle-select-label"
-                  value={vehicleNum}
-                  label="Vehicle num"
+                  label="Name"
+                  variant="outlined"
+                  value={custName}
                   onChange={(newValue) => {
-                    setVehicleNum(newValue.target.value);
+                    setCustName(newValue.target.value);
                   }}
-                >
-                  <MenuItem value={"--Select--"}>--Select--</MenuItem>
-                  <MenuItem value={"AP28DS9999"}>AP28DS9999</MenuItem>
-                  <MenuItem value={"Card"}>Card</MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                className="entry-input"
-                label="Driver Name"
-                variant="outlined"
-                value={driverName}
-                onChange={(newValue) => {
-                  setDriverName(newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Driver Number"
-                variant="outlined"
-                type="number"
-                value={driverNum}
-                onChange={(newValue) => {
-                  setDriverNum(+newValue.target.value);
-                }}
-              />
-              {/* <TextField
+                />
+                <TextField
+                  className="entry-input"
+                  label="Mobile"
+                  variant="outlined"
+                  type="number"
+                  value={custNum}
+                  onChange={(newValue) => {
+                    setCustNum(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="ID Proof"
+                  variant="outlined"
+                  value={custId}
+                  onChange={(newValue) => {
+                    setCustId(newValue.target.value);
+                  }}
+                />
+              </div>
+            </div>
+          </Paper>
+          <Paper
+            elevation={5}
+            className="add-entry__journey-details details-card"
+          >
+            <Typography
+              color="#003f7d;"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Journey Details:
+            </Typography>
+            <div className="details-card__inputs-div">
+              <div>
+                <TextField
+                  className="entry-input"
+                  label="From"
+                  variant="outlined"
+                  value={journeyFrom}
+                  onChange={(newValue) => {
+                    setJourneyFrom(newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="To"
+                  variant="outlined"
+                  value={journeyTo}
+                  onChange={(newValue) => {
+                    setJourneyTo(newValue.target.value);
+                  }}
+                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    label="DOJ"
+                    value={journeyDate}
+                    onChange={(newValue) => {
+                      setJourneyDate(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+              </div>
+            </div>
+          </Paper>
+          <Paper
+            elevation={7}
+            className="add-entry__vehicle-details details-card"
+          >
+            <Typography
+              color="#003f7d;"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Vehicle Details:
+            </Typography>
+            <div className="details-card__inputs-div">
+              <div>
+                <FormControl>
+                  <InputLabel id="vehicle-select-label">Vehicle num</InputLabel>
+                  <Select
+                    className="entry-input"
+                    labelId="vehicle-select-label"
+                    value={vehicleNum}
+                    label="Vehicle num"
+                    onChange={(newValue) => {
+                      setVehicleNum(newValue.target.value);
+                    }}
+                  >
+                    <MenuItem value={"--Select--"}>--Select--</MenuItem>
+                    <MenuItem value={"AP28DS9999"}>AP28DS9999</MenuItem>
+                    <MenuItem value={"Card"}>Card</MenuItem>
+                  </Select>
+                </FormControl>
+                <TextField
+                  className="entry-input"
+                  label="Driver Name"
+                  variant="outlined"
+                  value={driverName}
+                  onChange={(newValue) => {
+                    setDriverName(newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Driver Number"
+                  variant="outlined"
+                  type="number"
+                  value={driverNum}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">+91</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setDriverNum(+newValue.target.value);
+                  }}
+                />
+                {/* <TextField
                 className="entry-input"
                 label="Total Reading"
                 variant="outlined"
                 type="number"
               /> */}
-              <TextField
-                className="entry-input"
-                label="Opening Reading"
-                variant="outlined"
-                type="number"
-                value={openingReading}
-                onChange={(newValue) => {
-                  setOpeningReading(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="End Reading"
-                variant="outlined"
-                type="number"
-                value={endReading}
-                onChange={(newValue) => {
-                  setEndReading(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Total Reading"
-                variant="outlined"
-                type="number"
-                value={totalReading}
-                onChange={(newValue) => {
-                  setTotalReading(+newValue.target.value);
-                }}
-              />
-            </div>
-          </div>
-        </Paper>
-        <Paper
-          elevation={5}
-          className="add-entry__payment-details details-card"
-        >
-          <Typography
-            color="#003f7d;"
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Payment Details:
-          </Typography>
-          <div className="details-card__inputs-div">
-            <div>
-              <FormControl>
-                <InputLabel id="payment-type-select-label">Type</InputLabel>
-                <Select
+                <TextField
                   className="entry-input"
-                  labelId="payment-type-select-label"
-                  // id="demo-simple-select"
-                  value={paymentType}
-                  label="Type"
+                  label="Opening Reading"
+                  variant="outlined"
+                  type="number"
+                  value={openingReading}
                   onChange={(newValue) => {
-                    setPaymentType(newValue.target.value);
+                    setOpeningReading(+newValue.target.value);
                   }}
-                >
-                  <MenuItem value={"Cash"}>Cash</MenuItem>
-                  <MenuItem value={"UPI"}>UPI</MenuItem>
-                  <MenuItem value={"Card"}>Card</MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                className="entry-input"
-                label="Advance Paid"
-                variant="outlined"
-                type="number"
-                value={advance}
-                onChange={(newValue) => {
-                  setAdvance(+newValue.target.value);
-                }}
-              />
+                />
+                <TextField
+                  className="entry-input"
+                  label="End Reading"
+                  variant="outlined"
+                  type="number"
+                  value={endReading}
+                  onChange={(newValue) => {
+                    setEndReading(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Total Reading"
+                  variant="outlined"
+                  type="number"
+                  value={totalReading}
+                  onChange={(newValue) => {
+                    setTotalReading(+newValue.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div>
-              <TextField
-                className="entry-input"
-                label="Toll Charges"
-                variant="outlined"
-                type="number"
-                value={tollFee}
-                onChange={(newValue) => {
-                  setTollFee(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Parking Charges"
-                variant="outlined"
-                type="number"
-                value={parkingFee}
-                onChange={(newValue) => {
-                  setParkingFee(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Driver Beta"
-                variant="outlined"
-                type="number"
-                value={driverBeta}
-                onChange={(newValue) => {
-                  setDriverBeta(+newValue.target.value);
-                }}
-              />
+          </Paper>
+          <Paper
+            elevation={5}
+            className="add-entry__payment-details details-card"
+          >
+            <Typography
+              color="#003f7d;"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Payment Details:
+            </Typography>
+            <div className="details-card__inputs-div">
+              <div>
+                <FormControl>
+                  <InputLabel id="payment-type-select-label">Type</InputLabel>
+                  <Select
+                    className="entry-input"
+                    labelId="payment-type-select-label"
+                    value={paymentType}
+                    label="Type"
+                    onChange={(newValue) => {
+                      setPaymentType(newValue.target.value);
+                    }}
+                  >
+                    <MenuItem value={"Cash"}>Cash</MenuItem>
+                    <MenuItem value={"UPI"}>UPI</MenuItem>
+                    <MenuItem value={"Card"}>Card</MenuItem>
+                  </Select>
+                </FormControl>
+                <TextField
+                  className="entry-input"
+                  label="Advance Paid"
+                  variant="outlined"
+                  type="number"
+                  value={advance}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setAdvance(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Toll Charges"
+                  variant="outlined"
+                  type="number"
+                  value={tollFee}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setTollFee(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Parking Charges"
+                  variant="outlined"
+                  type="number"
+                  value={parkingFee}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setParkingFee(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Driver Beta"
+                  variant="outlined"
+                  type="number"
+                  value={driverBeta}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setDriverBeta(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="KMs driven"
+                  variant="outlined"
+                  type="number"
+                  value={kmDriven}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">KM</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setKmDriven(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Cost per KM"
+                  variant="outlined"
+                  type="number"
+                  value={costPerKm}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setCostPerKm(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Net Payable"
+                  variant="outlined"
+                  type="number"
+                  value={netPay}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setNetPay(+newValue.target.value);
+                  }}
+                />
+                <TextField
+                  className="entry-input"
+                  label="Total"
+                  variant="outlined"
+                  type="number"
+                  value={totalPay}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">₹</InputAdornment>
+                    ),
+                  }}
+                  onChange={(newValue) => {
+                    setTotalPay(+newValue.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div>
-              <TextField
-                className="entry-input"
-                label="KMs driven"
-                variant="outlined"
-                type="number"
-                value={kmDriven}
-                onChange={(newValue) => {
-                  setKmDriven(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Cost per KM"
-                variant="outlined"
-                type="number"
-                value={costPerKm}
-                onChange={(newValue) => {
-                  setCostPerKm(+newValue.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <TextField
-                className="entry-input"
-                label="Net Payable"
-                variant="outlined"
-                type="number"
-                value={netPay}
-                onChange={(newValue) => {
-                  setNetPay(+newValue.target.value);
-                }}
-              />
-              <TextField
-                className="entry-input"
-                label="Total"
-                variant="outlined"
-                type="number"
-                value={totalPay}
-                onChange={(newValue) => {
-                  setTotalPay(+newValue.target.value);
-                }}
-              />
-            </div>
-          </div>
-        </Paper>
-        <Button variant="contained" onClick={handleSubmit}>
-          Submit
-        </Button>
+          </Paper>
+          <Button variant="contained" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </div>
       </div>
-    </div>
+    </AppPage>
   );
 };
 

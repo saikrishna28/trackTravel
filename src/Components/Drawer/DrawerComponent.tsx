@@ -15,6 +15,7 @@ import {
   DirectionsCarFilledOutlined,
 } from "@mui/icons-material";
 import * as React from "react";
+import { useHistory } from "react-router-dom";
 
 interface DrawerComponentProps {
   drawerOpen: boolean;
@@ -24,6 +25,7 @@ interface DrawerComponentProps {
 const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
   props
 ) => {
+  let history = useHistory();
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -35,6 +37,11 @@ const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
       }
       props.setDrawerState(false);
     };
+  const openScreen = (screen: string) => {
+    if (screen === "addEntry") {
+      history.push("/addEntry");
+    }
+  };
   return (
     <Drawer anchor="left" open={props.drawerOpen} onClose={toggleDrawer(false)}>
       <Toolbar />
@@ -47,7 +54,11 @@ const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
       >
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                openScreen("addEntry");
+              }}
+            >
               <ListItemIcon>
                 <AddBoxOutlined />
               </ListItemIcon>
