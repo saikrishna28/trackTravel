@@ -1,8 +1,10 @@
 .add-entry {
-  color: #003f7d;
+  color: #1976d2;
 
   &__title {
-    margin-top: 5rem;
+    margin-top: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
   }
   &__container {
     font-family: inherit;

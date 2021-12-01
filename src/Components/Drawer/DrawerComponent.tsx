@@ -40,6 +40,10 @@ const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
   const openScreen = (screen: string) => {
     if (screen === "addEntry") {
       history.push("/addEntry");
+    } else if (screen === "vehicleDetails") {
+      history.push("/vehicleDetails");
+    } else if (screen === "consolidatedReport") {
+      history.push("/consolidatedReport");
     }
   };
   return (
@@ -66,7 +70,11 @@ const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                openScreen("consolidatedReport");
+              }}
+            >
               <ListItemIcon>
                 <ArticleOutlined />
               </ListItemIcon>
@@ -74,7 +82,11 @@ const DrawerComponent: React.FunctionComponent<DrawerComponentProps> = (
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                openScreen("vehicleDetails");
+              }}
+            >
               <ListItemIcon>
                 <DirectionsCarFilledOutlined />
               </ListItemIcon>

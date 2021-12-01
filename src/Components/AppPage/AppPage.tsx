@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AddEntry from "../AddEntry/AddEntry";
 import DrawerComponent from "../Drawer/DrawerComponent";
 import Header from "../Header/Header";
+import "./AppPage.scss";
 
 interface AppPageProps {}
 

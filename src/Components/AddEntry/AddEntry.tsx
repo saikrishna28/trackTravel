@@ -103,8 +103,8 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
     <AppPage>
       <div className="add-entry">
         <div className="add-entry__container">
-          <div className="add-entry__title">
-            <h1 className="">ADD NEW ENTRY</h1>
+          <div className="add-entry__title-div">
+            <h1 className="add-entry__title">Add New Entry</h1>
           </div>
           <Paper
             elevation={5}
@@ -135,6 +135,11 @@ const AddEntry: React.FunctionComponent<AddEntryProps> = () => {
                   variant="outlined"
                   type="number"
                   value={custNum}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">+91</InputAdornment>
+                    ),
+                  }}
                   onChange={(newValue) => {
                     setCustNum(+newValue.target.value);
                   }}
