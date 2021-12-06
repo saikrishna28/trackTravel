@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/trackTravel/static/css/main.80784728.chunk.css",
+    "main.js": "/trackTravel/static/js/main.88012e1a.chunk.js",
+    "main.js.map": "/trackTravel/static/js/main.88012e1a.chunk.js.map",
+    "runtime-main.js": "/trackTravel/static/js/runtime-main.09d85591.js",
+    "runtime-main.js.map": "/trackTravel/static/js/runtime-main.09d85591.js.map",
+    "static/css/2.5e02edc1.chunk.css": "/trackTravel/static/css/2.5e02edc1.chunk.css",
+    "static/js/2.83ec6bc1.chunk.js": "/trackTravel/static/js/2.83ec6bc1.chunk.js",
+    "static/js/2.83ec6bc1.chunk.js.map": "/trackTravel/static/js/2.83ec6bc1.chunk.js.map",
+    "static/js/3.b489efbf.chunk.js": "/trackTravel/static/js/3.b489efbf.chunk.js",
+    "static/js/3.b489efbf.chunk.js.map": "/trackTravel/static/js/3.b489efbf.chunk.js.map",
+    "index.html": "/trackTravel/index.html",
+    "static/css/2.5e02edc1.chunk.css.map": "/trackTravel/static/css/2.5e02edc1.chunk.css.map",
+    "static/css/main.80784728.chunk.css.map": "/trackTravel/static/css/main.80784728.chunk.css.map",
+    "static/js/2.83ec6bc1.chunk.js.LICENSE.txt": "/trackTravel/static/js/2.83ec6bc1.chunk.js.LICENSE.txt",
+    "static/media/300.css": "/trackTravel/static/media/roboto-vietnamese-300-normal.af9afdc1.woff2",
+    "static/media/400.css": "/trackTravel/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2",
+    "static/media/500.css": "/trackTravel/static/media/roboto-vietnamese-500-normal.b8e494da.woff2",
+    "static/media/700.css": "/trackTravel/static/media/roboto-vietnamese-700-normal.3096f18a.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09d85591.js",
+    "static/css/2.5e02edc1.chunk.css",
+    "static/js/2.83ec6bc1.chunk.js",
+    "static/css/main.80784728.chunk.css",
+    "static/js/main.88012e1a.chunk.js"
+  ]
+}
